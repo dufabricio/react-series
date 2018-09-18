@@ -9,13 +9,15 @@ export default class Contador extends React.Component {
         }
     }
 
+    // arrow function for using this from class context 
     decrementar = () => {
       this.setState({
           contador: this.state.contador -1,
       });  
     }
 
-    incrementar = () => {
+    // require a bind function on onclick function on button for using context of this
+    incrementar () {
         this.setState({
             contador: this.state.contador +1,
         });  
@@ -27,7 +29,7 @@ export default class Contador extends React.Component {
                 <h1>{this.state.contador}</h1>
                 <div>
                     <button onClick={this.decrementar}>-</button>
-                    <button onClick={this.incrementar}>+</button>
+                    <button onClick={this.incrementar.bind(this)}>+</button>
                 </div>
             </div>
         );
